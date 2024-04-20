@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Middleware;
+
+class AuthMiddleware {
+    public function handle($request) {
+        // Verificar si el usuario está autenticado
+        
+        if (!isset($_SESSION['user_id'])) {
+            http_response_code(401);
+            echo json_encode(["error" => "No autenticado"]);
+            exit;
+        }
+    }
+}
